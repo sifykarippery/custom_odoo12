@@ -1,0 +1,106 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+      <record id="view_purchase_project_inhert" model="ir.ui.view">
+            <field name="name">purchase.project_id.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="priority" eval="90" />
+            <field name="arch" type="xml">
+                <field name="date_order" position="after">
+                        <field name="project_id"/>
+                </field>
+            </field>
+    </record>
+    <record id="view_account_invoice_project_inhert" model="ir.ui.view">
+            <field name="name">account.invoice.project_id.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="priority" eval="90" />
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                        <field name="project_id"/>
+                </field>
+            </field>
+            </record>
+      <record id="view_stock_project_inhert" model="ir.ui.view">
+            <field name="name">stock.project_id.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form" />
+            <field name="priority" eval="90" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                        <field name="project_id"/>
+                </field>
+            </field>
+            </record>
+       <record id="view_account__project_task_purchase_inhert" model="ir.ui.view">
+            <field name="name">project.project_id.invoice_id.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2" />
+            <field name="priority" eval="90" />
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="stage_check_purchase" invisible="1"/>
+                <field name="stage_check_handover" invisible="1"/></xpath>
+
+
+                <xpath expr="//sheet/div[1]" position="inside">
+                 <button name="action_view_purchase_order" type="object" class="oe_stat_button"
+                    icon="fa-shopping-cart"  string="Purchase Order" attrs="{'invisible': [('stage_check_purchase', '!=', True)]}">
+                    </button>
+
+            <button name="action_view_delivery_order" class="oe_inline oe_stat_button"
+                    type="object" style="background:rgba(46, 210, 162,0.2);" string="Delivery shipping" icon="fa-truck" attrs="{'invisible': [('stage_check_handover', '!=', True)]}"/>
+
+
+                </xpath>
+
+            </field>
+
+
+    </record>
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="invoice_project.action_window">
+      <field name="name">invoice_project window</field>
+      <field name="res_model">invoice_project.invoice_project</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="invoice_project.action_server">
+      <field name="name">invoice_project server</field>
+      <field name="model_id" ref="model_invoice_project_invoice_project"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="invoice_project" id="invoice_project.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="invoice_project.menu_1" parent="invoice_project.menu_root"/>
+    <menuitem name="Menu 2" id="invoice_project.menu_2" parent="invoice_project.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="invoice_project.menu_1_list" parent="invoice_project.menu_1"
+              action="invoice_project.action_window"/>
+    <menuitem name="Server to list" id="invoice_project" parent="invoice_project.menu_2"
+              action="invoice_project.action_server"/>
+    -->
+  </data>
+</odoo>

@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+
+           <record id="stage1" model="project.task.type">
+             <field name="name">Meeting Stage</field>
+             <field name="sequence">1</field>
+           </record>
+
+           <record id="stage2" model="project.task.type">
+             <field name="name">Purchase Stage</field>
+             <field name="sequence">2</field>
+           </record>
+         <record id="stage3" model="project.task.type">
+             <field name="name">Handover Stage</field>
+             <field name="sequence">3</field>
+           </record>
+
+<!--           <record id="object1" model="invoice_project.invoice_project">-->
+<!--             <field name="name">Object 1</field>-->
+<!--             <field name="value">10</field>-->
+<!--           </record>-->
+
+<!--           <record id="object2" model="invoice_project.invoice_project">-->
+<!--             <field name="name">Object 2</field>-->
+<!--             <field name="value">20</field>-->
+<!--           </record>-->
+
+<!--           <record id="object3" model="invoice_project.invoice_project">-->
+<!--             <field name="name">Object 3</field>-->
+<!--             <field name="value">30</field>-->
+<!--           </record>-->
+
+<!--           <record id="object4" model="invoice_project.invoice_project">-->
+<!--             <field name="name">Object 4</field>-->
+<!--             <field name="value">40</field>-->
+<!--           </record>-->
+
+    </data>
+</odoo>
